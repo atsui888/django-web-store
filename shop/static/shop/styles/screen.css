@@ -1,0 +1,10 @@
+body {
+    font-family: sans-serif;
+    font-weight: 1em;
+    margin: 0px auto;
+    widows: 920px;
+}
+
+.logo {
+    width: 180px;
+}
