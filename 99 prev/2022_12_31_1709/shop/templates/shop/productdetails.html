@@ -1,0 +1,9 @@
+{% extends "shop/master.html" %}
+{% load html_formatters %}
+{% block main %}
+<div><ul>
+    <li>{{ description }}</li>
+    <li>Volume: {{ description }}</li>
+    <li>{{ price|currency_euro }}</li>
+</ul></div>
+{% endblock %}

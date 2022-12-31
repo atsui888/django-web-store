@@ -1,9 +1,12 @@
 {% extends "shop/master.html" %}
 {% load html_formatters %}
 {% block main %}
-<div><ul>
-    <li>{{ description }}</li>
-    <li>Volume: {{ description }}</li>
-    <li>{{ price|currency_euro }}</li>
-</ul></div>
+<!-- <div id="product_grid"> -->
+<!--    <div class="product"> -->
+        <img class="productdetailsimage" src="{% productimage image %}">
+        <p>{{ description }}</p>
+        <p>Volume: {{ volume }}</p>
+        <p>{{ price|currency_euro }}</p>
+    <!-- </div> -->
+<!-- </div> -->
 {% endblock %}

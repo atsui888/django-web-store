@@ -13,8 +13,7 @@ class ProductDetailsView(TemplateView):
             "title": product.name,
             "description": product.description,
             "price": product.price,
-            "volume": product.volume,
-            "image": product.image
+            "volume": product.volume
         }
 
         template = loader.get_template(self.template_name)

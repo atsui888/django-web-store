@@ -5,7 +5,7 @@
 <div id="product_grid">
 {% for pdt in products %}
     <div class="product">
-        <img src="{% productimage pdt.image %}">
+        <img src="https://raw.githubusercontent.com/madeinouweland/gennaroshop/main/products/b-water.png">
         <a href="{% url 'products' pdt.id %}">{{pdt.name}}</a>
         <p>{{pdt.price|currency_euro}}</p>
     </div>

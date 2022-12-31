@@ -12,10 +12,9 @@ class IndexView(TemplateView):
         for p in products:
             print(p)
         context = {
-            "title": "All Products",
+            "title": "Welcome to Django Web Shop",
             "products": [{
-                "id": p.id, "name": p.name, "price": p.price, "image": p.image}
-                for p in products],
+                "id": p.id, "name": p.name, "price": p.price} for p in products],
             }
 
         template = loader.get_template(self.template_name)
