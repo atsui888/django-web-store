@@ -11,9 +11,13 @@ class IndexView(TemplateView):
         products = Product.objects.order_by("name")
         for p in products:
             print(p)
-        context = {"products": [{"name": p.name, "price": p.price} for p in products]}
+        context = {
+            "title": "Welcome to Django Web Shop",
+            "products": [{
+                "id": p.id, "name": p.name, "price": p.price} for p in products],
+            }
 
-        template = loader.get_template(IndexView.template_name)
+        template = loader.get_template(self.template_name)
         # return HttpResponse("<h1>Django Webshop</h1>")
         return HttpResponse(template.render(context, request))
 

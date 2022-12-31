@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Django Web Shop</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'shop/styles/screen.css' %}">
-</head>
-<body>
-    <img class="logo" src="{% static 'shop/images/logo.png' %}">
-    {% load html_formatters %}
-    <div><h1>Welcome to Django Web Shop</h1></div>
-        <div><ul>
-            {% for pdt in products %}
-            <li>{{pdt.name}}, {{pdt.price|currency_euro}}</li>
-        {% endfor %}
-        </ul></div>
-</body>
-</html>
+{% extends "shop/master.html" %}
+{% load html_formatters %}
+{% block main %}
+
+<div id="product_grid">
+{% for pdt in products %}
+    <div class="product">
+        <img src="https://raw.githubusercontent.com/madeinouweland/gennaroshop/main/products/b-water.png">
+        <a href="{% url 'products' pdt.id %}">{{pdt.name}}</a>
+        <p>{{pdt.price|currency_euro}}</p>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
