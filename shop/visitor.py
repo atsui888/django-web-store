@@ -1,5 +1,5 @@
 from shop.models import Product
-
+from shop.models import City
 
 class Visitor:
     def __init__(self, request):
@@ -45,3 +45,22 @@ class Visitor:
             "cityid": city_id
         }
         self.request.session.modified = True
+
+    def get_delivery_details(self):
+        delivery_address = self.request.session["visitor"]["deliveryaddress"]
+        return {
+            "name": delivery_address["name"],
+            "address": delivery_address["address"],
+            "city": City.objects.get(id=delivery_address["cityid"])
+        }
+
+    def has_delivery_address(self):
+        return "deliveryaddress" in self.request.session["visitor"]
+
+    def place_order(self):
+        # todo: place the order in the database
+        # todo: send notification emails
+        # after that,
+        del self.request.session["visitor"]
+
+

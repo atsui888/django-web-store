@@ -4,6 +4,7 @@ from shop.views.productdetailsview import ProductDetailsView
 from shop.views.shoppingcartview import ShoppingCartView
 from shop.views.deliveryaddressview import DeliveryAddressView
 from shop.views.orderconfirmview import OrderConfirmView
+from shop.views.ordercompletedview import OrderCompletedView
 
 # the below are route patterns
 urlpatterns = [
@@ -12,5 +13,6 @@ urlpatterns = [
     path("shoppingcart", ShoppingCartView.as_view(), name="shoppingcart"),
     path("deliveryaddress", DeliveryAddressView.as_view(), name="deliveryaddress"),
     path("orderconfirm", OrderConfirmView.as_view(), name="orderconfirm"),
+    path("ordercompleted", OrderCompletedView.as_view(), name="ordercompleted"),
     path("", IndexView.as_view(), name="index")
 ]

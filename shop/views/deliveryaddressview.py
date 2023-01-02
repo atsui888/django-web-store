@@ -28,7 +28,14 @@ class DeliveryAddressView(TemplateView):
         visitor = Visitor(request)
         categories = Category.objects.order_by("name")
 
-        form = DeliveryAddressForm()
+        if visitor.has_delivery_address():
+            form = DeliveryAddressForm(initial={
+                "name": visitor.get_delivery_details()['name'],
+                "address": visitor.get_delivery_details()["address"],
+                "city": visitor.get_delivery_details()["city"].id
+            })
+        else:
+            form = DeliveryAddressForm()
 
         context = {
             "visitor": visitor,
