@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Web Shop</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/styles/screen.css' %}">
+</head>
+<body>
+    <div id="header">
+        <img class="logo" src="{% static 'shop/images/logo.png' %}">
+        <form class="search" action="{% url 'index' %}" method="get">
+            <input type="text" name="q" value="{{ filter }}">
+            <button type="submit">Search</button>
+        </form>
+        <a href="#">Shopping cart ({{ visitor.get_shopping_cart_item_count }})</a>
+    </div>
+    <div id="categories">
+        <ul>
+            <li><a href="{% url 'index' %}">All</a></li>
+            {% for c in categories %}
+                <li><a href="{% url 'category' c.id %}">{{c.name}}</a> </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+    </div>
+    <div><h1>{{ title }}</h1></div>
+    {% block main %} {% endblock %}
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Web Shop</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/styles/screen.css' %}">
+</head>
+<body>
+    <img class="logo" src="{% static 'shop/images/logo.png' %}">
+    <div><h1>{{ title }}</h1></div>
+    {% block main %} {% endblock %}
+</body>
+</html>

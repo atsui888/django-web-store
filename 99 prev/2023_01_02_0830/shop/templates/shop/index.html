@@ -1,0 +1,15 @@
+{% extends "shop/master.html" %}
+{% load html_formatters %}
+{% block main %}
+
+<div id="product_grid">
+{% for pdt in products %}
+    <div class="product">
+        <img src="{% productimage pdt.image %}">
+        <a href="{% url 'products' pdt.id %}">{{pdt.name}}</a>
+        <p>{{pdt.price|currency_euro}}</p>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

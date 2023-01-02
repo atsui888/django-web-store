@@ -1,0 +1,34 @@
+{% extends "shop/master.html" %}
+{% load html_formatters %}
+
+{% block main %}
+
+{% if visitor.get_shopping_cart_item_count == 0 %}
+    <p>Your cart is empty. Put <a href="{% url 'index' %}">something</a> in it!</p>
+{% else %}
+    {% load static %}
+    <table>
+        {% for item in visitor.get_shopping_cart_items %}
+        <tr>
+            <td><img src="{% productimage item.image %}"></td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price|currency_euro }}</td>
+            <td>{{ item.quantity }}x</td>
+        </tr>
+        <form method="post">
+            {% csrf_token %}
+            <td><button type="submit" value="{{item.id}}" name="decrement">-1</button></td>
+            <td><button type="submit" value="{{item.id}}" name="increment">+1</button></td>
+        </form>
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td>Total:</td>
+        <td>{{ visitor.shopping_cart_total_price|currency_euro }}</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+{% endif %}
+
+{% endblock %}

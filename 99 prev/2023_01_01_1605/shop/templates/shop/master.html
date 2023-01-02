@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Web Shop</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/styles/screen.css' %}">
+</head>
+<body>
+    <div id="header">
+        <img class="logo" src="{% static 'shop/images/logo.png' %}">
+    </div>
+    <div id="categories">
+        <ul>
+            <li><a href="{% url 'index' %}">All</a></li>
+            {% for c in categories %}
+                <li><a href="{% url 'category' c.id %}">{{c.name}}</a> </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+    </div>
+    <div><h1>{{ title }}</h1></div>
+    {% block main %} {% endblock %}
+</body>
+</html>
